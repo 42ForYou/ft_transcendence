@@ -14,7 +14,7 @@ services:
 
     volumes:
       - frontend_srcs:/var/www/html
-      - images:/var/www/html/public/images
+      - image_data:/var/www/html/public/images
 
     networks:
       - app_network
@@ -26,7 +26,7 @@ services:
 
     volumes:
       - backend_srcs:/app
-      - images:/app/src/images
+      - image_data:/app/src/images
 
     env_file:
       - ./.env
@@ -64,14 +64,8 @@ volumes:
   frontend_srcs:
     name: frontend_srcs
 
-  # avatar는 images/avatar folder로 접근.
-  images:
-    name: images
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ${PWD}/src/images
+  image_data:
+    name: image_data
 
 networks:
   db_network:
