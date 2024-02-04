@@ -1,0 +1,86 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend_dev
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - ./src/frontend:/app
+
+    depends_on:
+      - backend
+    networks:
+      - app_network_dev
+
+  nginx:
+    container_name: nginx_dev
+    build:
+      context: ./src/frontend
+      dockerfile: ./nginx/Dockerfile.dev
+    volumes:
+      - ./src/frontend/dist:/var/www/html
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - app_network_dev
+    depends_on:
+      - frontend
+
+  backend:
+    container_name: backend_dev
+    build: ./src/backend
+    command: /scripts/DEV_server_run.sh
+
+    volumes:
+      - ./src/backend:/app
+      - images:/app/images
+    env_file:
+      - ./.dev.env
+    networks:
+      - db_network_dev
+      - app_network_dev
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    depends_on:
+      - db
+
+  db:
+    container_name: db_dev
+    build: ./src/backend/db
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data/
+    env_file:
+      - ./.dev.env
+    networks:
+      - db_network_dev
+    environment:
+      - POSTGRES_DB=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+volumes:
+  postgres_data_dev:
+    name: postgres_data_dev
+  # avatar는 images/avatar folder로 접근.
+  images:
+    name: images_dev
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PWD}/src/images
+
+networks:
+  db_network_dev:
+    name: db_network_dev
+    driver: bridge
+
+  app_network_dev:
+    name: app_network_dev
+    driver: bridge

@@ -1,0 +1,83 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    build: ./src/frontend
+
+    depends_on:
+      - backend
+
+    ports:
+      - "443:443"
+      - "80:80"
+
+    volumes:
+      - frontend_srcs:/var/www/html
+      - images:/var/www/html/public/images
+
+    networks:
+      - app_network
+
+  backend:
+    container_name: backend
+    build: ./src/backend
+    command: /app/scripts/ASGI_server_run.sh
+
+    volumes:
+      - backend_srcs:/app
+      - images:/app/src/images
+
+    env_file:
+      - ./.env
+    networks:
+      - db_network
+      - app_network
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    build: ./src/backend/db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    networks:
+      - db_network
+    environment:
+      - POSTGRES_DB=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+  backend_srcs:
+    name: backend_srcs
+
+  frontend_srcs:
+    name: frontend_srcs
+
+  # avatar는 images/avatar folder로 접근.
+  images:
+    name: images
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PWD}/src/images
+
+networks:
+  db_network:
+    name: db_network
+    driver: bridge
+
+  app_network:
+    name: app_network
+    driver: bridge
