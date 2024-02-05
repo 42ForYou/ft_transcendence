@@ -44,10 +44,6 @@ services:
     networks:
       - db_network_dev
       - app_network_dev
-    environment:
-      - POSTGRES_NAME=${POSTGRES_NAME}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
 
@@ -60,11 +56,6 @@ services:
       - ./.dev.env
     networks:
       - db_network_dev
-    environment:
-      - POSTGRES_DB=${POSTGRES_NAME}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-
 volumes:
   postgres_data_dev:
     name: postgres_data_dev

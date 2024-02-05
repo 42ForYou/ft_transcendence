@@ -31,10 +31,15 @@ fclean:
 	$(call delete-folder,src/images)
 	docker-compose down -v --remove-orphans
 
+dfclean:
+	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🧹 Clean docker-compose")
+	$(call delete-folder,src/images)
+	docker-compose -f docker-compose.dev.yaml down -v --remove-orphans
+
 re: fclean
 	@$(MAKE) all
 
-dre: fclean
+dre: dfclean
 	@$(MAKE) dev
 
 .PHONY: all fclean clean dev re dre down up
