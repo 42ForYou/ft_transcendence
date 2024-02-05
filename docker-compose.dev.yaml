@@ -21,7 +21,8 @@ services:
       context: ./src/frontend
       dockerfile: ./nginx/Dockerfile.dev
     volumes:
-      - ./src/frontend/dist:/var/www/html
+      - ./src/frontend:/var/www/html
+      - images:/var/www/html/public/images
     ports:
       - "443:443"
       - "80:80"
@@ -38,9 +39,9 @@ services:
 
     volumes:
       - ./src/backend:/app
-      - images:/app/images
+      - images:/app/src/images
     env_file:
-      - ./.dev.env
+      - .dev.env
     networks:
       - db_network_dev
       - app_network_dev
@@ -49,11 +50,11 @@ services:
 
   db:
     container_name: db_dev
-    image: jinmugo/db
+    build: ./src/backend/db
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data/
     env_file:
-      - ./.dev.env
+      - .dev.env
     networks:
       - db_network_dev
 volumes:

@@ -28,30 +28,22 @@ services:
       - image_data:/app/src/images
 
     env_file:
-      - ./.env
+      - .env
     networks:
       - db_network
-      - app_network
-    environment:
-      - POSTGRES_NAME=${POSTGRES_NAME}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - app_network 
     depends_on:
       - db
 
   db:
     container_name: db
-    image: jinmugo/db
+    build: ./src/backend/db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env
+      - .env
     networks:
       - db_network
-    environment:
-      - POSTGRES_DB=${POSTGRES_NAME}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
 volumes:
   postgres_data:
