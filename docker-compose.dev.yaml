@@ -32,8 +32,9 @@ services:
 
   backend:
     container_name: backend_dev
-    build: ./src/backend
-    command: /scripts/DEV_server_run.sh
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile.dev
 
     volumes:
       - ./src/backend:/app
@@ -52,7 +53,7 @@ services:
 
   db:
     container_name: db_dev
-    build: ./src/backend/db
+    image: jinmugo/db
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data/
     env_file:

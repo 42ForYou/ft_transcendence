@@ -22,7 +22,6 @@ services:
   backend:
     container_name: backend
     build: ./src/backend
-    command: /app/scripts/ASGI_server_run.sh
 
     volumes:
       - backend_srcs:/app
@@ -42,7 +41,7 @@ services:
 
   db:
     container_name: db
-    build: ./src/backend/db
+    image: jinmugo/db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
