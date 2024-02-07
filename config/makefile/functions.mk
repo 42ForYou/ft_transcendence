@@ -13,7 +13,7 @@ define delete-folder
 	@if [ ! -d $(1) ]; then \
 		echo "디렉토리 $(1)가 존재하지 않습니다."; \
 	else \
-		echo "정말로 $(1) 폴더를 삭제하시겠습니까? [y/N]: "; \
+		echo "정말로 $(1) 폴더를 삭제하시겠습니까? [y/n]: "; \
 		read ans; \
 		if [ "$$ans" = "y" ] || [ "$$ans" = "Y" ]; then \
 			echo "$(1) 폴더를 삭제합니다..."; \

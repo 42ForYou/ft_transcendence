@@ -1,45 +1,17 @@
-include conf/colors.mk
-include conf/functions.mk
-
-DIRS := src/images src/images/avatar
-
 .DEFAULT_GOAL := all
 
-dirs:
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📁 Creating directories")
-	mkdir -p $(DIRS)
+include config/makefile/colors.mk
+include config/makefile/functions.mk
 
-up all:
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker-compose up")
-	$(call check-file, .env)
-	export NODE_ENV="production"
-	docker-compose -f docker-compose.yaml up --build -d
+up:
+	docker-compose -f docker-compose.prod.yaml $@ --build -d $(filter-out $@,$(MAKECMDGOALS))
 
-dev: dirs
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker-compose develop up")
-	$(call check-file, .dev.env)
-	export NODE_ENV="development"
-	cd src/frontend && npm install
-	docker-compose -f docker-compose.dev.yaml up --build -d
+down:
+	docker-compose -f docker-compose.prod.yaml $@ $(filter-out $@,$(MAKECMDGOALS))
 
-down clean:
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🔻 Down docker-compose")
-	docker-compose down
+frontend backend nginx postgres:
+	@echo "🚀 Starting $@"
 
-fclean:
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🧹 Clean docker-compose")
-	$(call delete-folder,src/images)
-	docker-compose down -v --remove-orphans
-
-dfclean:
-	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🧹 Clean docker-compose")
-	$(call delete-folder,src/images)
-	docker-compose -f docker-compose.dev.yaml down -v --remove-orphans
-
-re: fclean
-	@$(MAKE) all
-
-dre: dfclean
-	@$(MAKE) dev
-
-.PHONY: all fclean clean dev re dre down up
+.PHONY: postgres frontend backend nginx
+include config/makefile/recipes.mk
+include config/makefile/devRecipes.mk
