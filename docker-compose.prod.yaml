@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    build: 
+      context: ./src
+      dockerfile: frontend/Dockerfile
+
+    depends_on:
+      - backend
+
+    ports:
+      - "443:443"
+      - "80:80"
+
+    volumes:
+      - frontend_srcs:/var/www/html
+      - image_data:/var/www/html/public/images
+
+    networks:
+      - app_network
+
+  backend:
+    container_name: backend
+    build: ./src/backend
+
+    volumes:
+      - backend_srcs:/app
+      - image_data:/app/src/images
+
+    env_file:
+      - .env
+    networks:
+      - db_network
+      - app_network 
+    depends_on:
+      - postgres 
+
+  postgres:
+    container_name: postgres 
+    build: ./src/postgres/
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    networks:
+      - db_network
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+  backend_srcs:
+    name: backend_srcs
+
+  frontend_srcs:
+    name: frontend_srcs
+
+  image_data:
+    name: image_data
+
+networks:
+  db_network:
+    name: db_network
+    driver: bridge
+
+  app_network:
+    name: app_network
+    driver: bridge
