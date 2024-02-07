@@ -18,8 +18,8 @@ services:
   nginx:
     container_name: nginx_dev
     build:
-      context: ./src/frontend
-      dockerfile: ./nginx/Dockerfile.dev
+      context: ./src/nginx
+      dockerfile: ./Dockerfile.dev
     volumes:
       - ./src/frontend:/var/www/html
       - images:/var/www/html/public/images
@@ -36,7 +36,8 @@ services:
     build:
       context: ./src/backend
       dockerfile: Dockerfile.dev
-
+    ports:
+      - "8000:8000"
     volumes:
       - ./src/backend:/app
       - images:/app/src/images
@@ -46,28 +47,28 @@ services:
       - db_network_dev
       - app_network_dev
     depends_on:
-      - db
+      - postgres 
 
-  db:
-    container_name: db_dev
-    build: ./src/backend/db
+  postgres:
+    container_name: postgres_dev
+    build: ./src/postgres/
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data/
     env_file:
       - .dev.env
     networks:
       - db_network_dev
+
 volumes:
   postgres_data_dev:
     name: postgres_data_dev
-  # avatar는 images/avatar folder로 접근.
   images:
     name: images_dev
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: ${PWD}/src/images
+      device: ${PWD}/public
 
 networks:
   db_network_dev:

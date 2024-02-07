@@ -3,7 +3,9 @@ version: "3"
 services:
   frontend:
     container_name: frontend
-    build: ./src/frontend
+    build: 
+      context: ./src
+      dockerfile: frontend/Dockerfile
 
     depends_on:
       - backend
@@ -33,11 +35,11 @@ services:
       - db_network
       - app_network 
     depends_on:
-      - db
+      - postgres 
 
-  db:
-    container_name: db
-    build: ./src/backend/db
+  postgres:
+    container_name: postgres 
+    build: ./src/postgres/
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
