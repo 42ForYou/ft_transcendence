@@ -16,3 +16,9 @@ RUN openssl req -x509 -nodes -days 365 \
 	-out /etc/nginx/ssl/42foryou.crt;
 
 EXPOSE 443 80
+
+COPY check_backend.sh /usr/local/bin/check_backend.sh
+
+RUN chmod +x /usr/local/bin/check_backend.sh
+
+CMD ["/usr/local/bin/check_backend.sh"]
