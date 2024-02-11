@@ -26,8 +26,4 @@ RUN apt-get update \
 COPY ./scripts /scripts
 RUN chmod +x /scripts/*.sh
 
-# todo: 환경 변수로 대체
-ENV BACKEND_HOST=backend
-ENV BACKEND_PORT=8000
-
 CMD ["/scripts/entrypoint.sh"]

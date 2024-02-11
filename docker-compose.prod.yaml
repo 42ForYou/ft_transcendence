@@ -3,9 +3,9 @@ version: "3"
 services:
   frontend:
     container_name: frontend
-    build: 
+    build:
       context: ./src
-      dockerfile: frontend/Dockerfile
+      dockerfile: frontend/Dockerfile.prod
 
     depends_on:
       - backend
@@ -23,27 +23,31 @@ services:
 
   backend:
     container_name: backend
-    build: ./src/backend
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile.prod
 
     volumes:
       - backend_srcs:/app
       - image_data:/app/src/images
 
     env_file:
-      - .env
+      - .env.prod
+      - ./src/backend/.env.prod
     networks:
       - db_network
-      - app_network 
+      - app_network
     depends_on:
-      - postgres 
+      - postgres
 
+  # postgres are same environment for production and development
   postgres:
-    container_name: postgres 
+    container_name: postgres
     build: ./src/postgres/
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - .env
+      - .env.prod
     networks:
       - db_network
 

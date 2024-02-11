@@ -7,7 +7,7 @@ dirs:
 
 dev: dirs
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker-compose develop up")
-	$(call check-file, .dev.env)
+	$(call check-file, .env.dev)
 	export NODE_ENV="development"
 	cd src/frontend && npm install
 	docker-compose -f docker-compose.dev.yaml up --build -d

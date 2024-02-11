@@ -12,6 +12,7 @@ down:
 frontend backend nginx postgres:
 	@echo "🚀 Starting $@"
 
-.PHONY: postgres frontend backend nginx
 include config/makefile/recipes.mk
 include config/makefile/devRecipes.mk
+
+.PHONY: postgres frontend backend nginx

@@ -1,6 +1,6 @@
 all:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker-compose up")
-	$(call check-file, .env)
+	$(call check-file, .env.prod)
 	export NODE_ENV="production"
 	docker-compose -f docker-compose.prod.yaml up --build -d
 
