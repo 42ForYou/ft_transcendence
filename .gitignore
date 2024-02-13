@@ -1,6 +1,7 @@
 # 환경 설정 파일
 .env
-.dev.env
+.env.dev
+.env.prod
 
 # macOS 시스템 파일
 .DS_Store

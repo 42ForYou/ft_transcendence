@@ -16,3 +16,14 @@ RUN openssl req -x509 -nodes -days 365 \
 	-out /etc/nginx/ssl/42foryou.crt;
 
 EXPOSE 443 80
+
+# netcat 설치
+RUN apt-get update \
+    && apt-get install -y netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+# 스크립트 복사 및 실행 권한 부여
+COPY ./scripts /scripts
+RUN chmod +x /scripts/*.sh
+
+CMD ["/scripts/entrypoint.sh"]
