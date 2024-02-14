@@ -20,4 +20,8 @@ dfclean:
 dre: dfclean
 	@$(MAKE) dev
 
+dlog:
+	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📜 Show develop docker-compose logs")
+	docker-compose -f docker-compose.dev.yaml logs -f
+
 .PHONY: dev dre dfclean

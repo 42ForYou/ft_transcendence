@@ -15,4 +15,8 @@ fclean:
 re: fclean
 	@$(MAKE) all
 
-.PHONY: all fclean clean re down up
+log: 
+	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📜 Show production docker-compose logs")
+	docker-compose -f docker-compose.prod.yaml logs -f
+
+.PHONY: all clean fclean re
