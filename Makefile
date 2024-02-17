@@ -4,10 +4,10 @@ include config/makefile/colors.mk
 include config/makefile/functions.mk
 
 up:
-	docker-compose -f docker-compose.prod.yaml $@ --build -d $(filter-out $@,$(MAKECMDGOALS))
+	docker compose -f docker-compose.prod.yaml $@ --build -d $(filter-out $@,$(MAKECMDGOALS))
 
 down:
-	docker-compose -f docker-compose.prod.yaml $@ $(filter-out $@,$(MAKECMDGOALS))
+	docker compose -f docker-compose.prod.yaml $@ $(filter-out $@,$(MAKECMDGOALS))
 
 frontend backend nginx postgres:
 	@echo "🚀 Starting $@"
