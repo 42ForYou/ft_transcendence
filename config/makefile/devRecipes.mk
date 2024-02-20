@@ -4,10 +4,11 @@ DIRS := $(PUBLIC) public/images
 dirs:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📁 Creating directories")
 	mkdir -p $(DIRS)
+	@echo "\n📁 Directories $(BOLD_GREEN)created$(NO_COLOR)\n"
 
 dev: dirs
+	$(call check-env-dev)
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker compose develop up")
-	$(call check-file, .env.dev)
 	$(call set-env,NODE_ENV,"development")
 	@cd src/frontend && npm install
 	$(call select-option, \
@@ -22,6 +23,9 @@ dfclean:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🧹 Clean docker compose")
 	$(call delete-folder,$(PUBLIC))
 	docker compose -f docker-compose.dev.yaml down -v --remove-orphans
+
+dup:
+	docker compose -f docker-compose.prod.yaml $@ --build -d $(filter-out $@,$(MAKECMDGOALS))	
 
 dre: dfclean
 	@$(MAKE) dev
