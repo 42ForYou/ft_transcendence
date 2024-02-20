@@ -24,9 +24,6 @@ dfclean:
 	$(call delete-folder,$(PUBLIC))
 	docker compose -f docker-compose.dev.yaml down -v --remove-orphans
 
-dup:
-	docker compose -f docker-compose.prod.yaml $@ --build -d $(filter-out $@,$(MAKECMDGOALS))	
-
 dre: dfclean
 	@$(MAKE) dev
 
@@ -34,4 +31,4 @@ dlog:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📜 Show develop docker compose logs")
 	docker compose -f docker-compose.dev.yaml logs -f
 
-.PHONY: dev dre dfclean
+.PHONY: dev dre dfclean dlog
