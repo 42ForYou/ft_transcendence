@@ -1,9 +1,27 @@
 define check-file
+	@echo "Checking file... $(YELLOW) $(1) $(NO_COLOR)\n"
 	@if [ ! -f $(1) ]; then \
 		echo "$(1) 파일이 존재하지 않습니다."; \
 		exit 1; \
 	fi
 endef
+
+# see vars.mk
+define check-env-prod
+	@echo "\n$(BOLD_YELLOW)🔍 Checking environment variables$(NO_COLOR)\n"
+	@$(CHECK-ENV) $(ENV_MUST_PROD) $(ENV_PROD)  ft_transcendence
+	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST_PROD)) $(addprefix $(FRONT_ENV_DIR), $(ENV_PROD)) frontend
+	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST_PROD)) $(addprefix $(BACK_ENV_DIR), $(ENV_PROD)) backend
+endef
+
+# see vars.mk
+define check-env-dev
+	@$(CHECK-ENV) $(ENV_MUST_DEV) $(ENV_DEV)  ft_transcendence-dev
+	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST_DEV)) $(addprefix $(FRONT_ENV_DIR), $(ENV_DEV)) frontend-dev
+	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST_DEV)) $(addprefix $(BACK_ENV_DIR), $(ENV_DEV)) backend-dev
+endef
+
+
 
 define format_print
 	@echo "$(1)\n[$(2)] $(3)$(4)$(NO_COLOR)\n"

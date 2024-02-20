@@ -4,10 +4,11 @@ DIRS := $(PUBLIC) public/images
 dirs:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📁 Creating directories")
 	mkdir -p $(DIRS)
+	@echo "\n📁 Directories $(BOLD_GREEN)created$(NO_COLOR)\n"
 
 dev: dirs
+	$(call check-env-dev)
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker compose develop up")
-	$(call check-file, .env.dev)
 	$(call set-env,NODE_ENV,"development")
 	@cd src/frontend && npm install
 	$(call select-option, \
@@ -30,4 +31,4 @@ dlog:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📜 Show develop docker compose logs")
 	docker compose -f docker-compose.dev.yaml logs -f
 
-.PHONY: dev dre dfclean
+.PHONY: dev dre dfclean dlog

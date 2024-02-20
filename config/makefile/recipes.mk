@@ -1,6 +1,6 @@
 all:
+	$(call check-env-prod)
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"🚀 Starting docker compose up")
-	$(call check-file, .env.prod)
 	$(call set-env,NODE_ENV,"production")
 	$(call select-option,\
 		Do you want to run docker compose in detached mode?, \
@@ -25,4 +25,4 @@ log:
 	$(call format_print,$(BOLD_YELLOW),$@,$(BOLD_GREEN),"📜 Show production docker compose logs")
 	docker compose -f docker-compose.prod.yaml logs -f
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re log
