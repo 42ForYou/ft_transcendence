@@ -9,16 +9,16 @@ endef
 # see vars.mk
 define check-env-prod
 	@echo "\n$(BOLD_YELLOW)🔍 Checking environment variables$(NO_COLOR)\n"
-	@$(CHECK-ENV) $(ENV_MUST) $(ENV_PROD)  ft_transcendence
-	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST)) $(addprefix $(FRONT_ENV_DIR), $(ENV_PROD)) frontend
-	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST)) $(addprefix $(BACK_ENV_DIR), $(ENV_PROD)) backend
+	@$(CHECK-ENV) $(ENV_MUST_PROD) $(ENV_PROD)  ft_transcendence
+	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST_PROD)) $(addprefix $(FRONT_ENV_DIR), $(ENV_PROD)) frontend
+	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST_PROD)) $(addprefix $(BACK_ENV_DIR), $(ENV_PROD)) backend
 endef
 
 # see vars.mk
 define check-env-dev
-	@$(CHECK-ENV) $(ENV_MUST) $(ENV_DEV)  ft_transcendence-dev
-	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST)) $(addprefix $(FRONT_ENV_DIR), $(ENV_DEV)) frontend-dev
-	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST)) $(addprefix $(BACK_ENV_DIR), $(ENV_DEV)) backend-dev
+	@$(CHECK-ENV) $(ENV_MUST_DEV) $(ENV_DEV)  ft_transcendence-dev
+	@$(CHECK-ENV) $(addprefix $(FRONT_ENV_DIR), $(ENV_MUST_DEV)) $(addprefix $(FRONT_ENV_DIR), $(ENV_DEV)) frontend-dev
+	@$(CHECK-ENV) $(addprefix $(BACK_ENV_DIR), $(ENV_MUST_DEV)) $(addprefix $(BACK_ENV_DIR), $(ENV_DEV)) backend-dev
 endef
 
 
