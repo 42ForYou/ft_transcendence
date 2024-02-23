@@ -6,10 +6,10 @@ services:
     build:
       context: ./src/frontend
       dockerfile: Dockerfile.dev
-
     volumes:
       - ./src/frontend:/app
-
+    env_file:
+      - .env.dev
     depends_on:
       - backend
     networks:

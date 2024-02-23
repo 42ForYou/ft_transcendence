@@ -17,6 +17,9 @@ services:
     volumes:
       - frontend_srcs:/var/www/html
       - image_data:/var/www/html/public/images
+    
+    env_file:
+      - .env.prod
 
     networks:
       - app_network
