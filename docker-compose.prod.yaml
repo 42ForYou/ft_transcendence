@@ -6,18 +6,16 @@ services:
     build:
       context: ./src
       dockerfile: frontend/Dockerfile.prod
-
-    depends_on:
-      - backend
-
-    ports:
-      - "443:443"
-      - "80:80"
-
+    env_file:
+      - .env.prod
     volumes:
       - frontend_srcs:/var/www/html
       - image_data:/var/www/html/public/images
-
+    ports:
+      - "443:443"
+      - "80:80"
+    depends_on:
+      - backend
     networks:
       - app_network
 
@@ -26,41 +24,35 @@ services:
     build:
       context: ./src/backend
       dockerfile: Dockerfile.prod
-
-    volumes:
-      - backend_srcs:/app
-      - image_data:/app/src/images
-
     env_file:
       - .env.prod
       - ./src/backend/.env.prod
+    volumes:
+      - backend_srcs:/app
+      - image_data:/app/src/images
+    depends_on:
+      - postgres
     networks:
       - db_network
       - app_network
-    depends_on:
-      - postgres
 
-  # postgres are same environment for production and development
   postgres:
     container_name: postgres
     build: ./src/postgres/
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - .env.prod
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     networks:
       - db_network
 
 volumes:
   postgres_data:
     name: postgres_data
-
   backend_srcs:
     name: backend_srcs
-
   frontend_srcs:
     name: frontend_srcs
-
   image_data:
     name: image_data
 
@@ -68,7 +60,6 @@ networks:
   db_network:
     name: db_network
     driver: bridge
-
   app_network:
     name: app_network
     driver: bridge
