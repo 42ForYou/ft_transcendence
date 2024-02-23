@@ -6,10 +6,10 @@ services:
     build:
       context: ./src/frontend
       dockerfile: Dockerfile.dev
-    volumes:
-      - ./src/frontend:/app
     env_file:
       - .env.dev
+    volumes:
+      - ./src/frontend:/app
     depends_on:
       - backend
     networks:
@@ -20,45 +20,45 @@ services:
     build:
       context: ./src/nginx
       dockerfile: ./Dockerfile.dev
+    env_file:
+      - .env.dev
     volumes:
       - ./src/frontend:/var/www/html
       - images:/var/www/html/public/images
-    env_file:
-      - .env.dev
     ports:
       - "443:443"
       - "80:80"
-    networks:
-      - app_network_dev
     depends_on:
       - frontend
+    networks:
+      - app_network_dev
 
   backend:
     container_name: backend_dev
     build:
       context: ./src/backend
       dockerfile: Dockerfile.dev
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./src/backend:/app
-      - images:/app/src/images
     env_file:
       - .env.dev
       - ./src/backend/.env.dev
+    volumes:
+      - ./src/backend:/app
+      - images:/app/src/images
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
     networks:
       - db_network_dev
       - app_network_dev
-    depends_on:
-      - postgres 
 
   postgres:
     container_name: postgres_dev
     build: ./src/postgres/
-    volumes:
-      - postgres_data_dev:/var/lib/postgresql/data/
     env_file:
       - .env.dev
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data/
     networks:
       - db_network_dev
 
@@ -77,7 +77,6 @@ networks:
   db_network_dev:
     name: db_network_dev
     driver: bridge
-
   app_network_dev:
     name: app_network_dev
     driver: bridge
