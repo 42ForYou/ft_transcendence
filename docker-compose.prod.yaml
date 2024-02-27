@@ -9,11 +9,11 @@ services:
     env_file:
       - .env.prod
     volumes:
+      - ssl_nginx:/etc/nginx/ssl
       - frontend_srcs:/var/www/html
       - image_data:/var/www/html/public/images
     ports:
       - "443:443"
-      - "80:80"
     depends_on:
       - backend
     networks:
@@ -28,6 +28,7 @@ services:
       - .env.prod
       - ./src/backend/.env.prod
     volumes:
+      - ssl_backend:/etc/backend/ssl
       - backend_srcs:/app
       - image_data:/app/src/images
     depends_on:
@@ -46,6 +47,7 @@ services:
     networks:
       - db_network
 
+
 volumes:
   postgres_data:
     name: postgres_data
@@ -55,6 +57,10 @@ volumes:
     name: frontend_srcs
   image_data:
     name: image_data
+  ssl_nginx:
+    name: ssl_nginx
+  ssl_backend:
+    name: ssl_backend
 
 networks:
   db_network:
