@@ -11,6 +11,7 @@ services:
     volumes:
       - ssl_nginx:/etc/nginx/ssl
       - frontend_srcs:/var/www/html
+      - static_data:/var/www/html/backend/static
       - image_data:/var/www/html/public/images
     ports:
       - "443:443"
@@ -28,6 +29,7 @@ services:
       - .env.prod
       - ./src/backend/.env.prod
     volumes:
+      - static_data:/app/src/static
       - ssl_backend:/etc/backend/ssl
       - backend_srcs:/app
       - image_data:/app/src/images
@@ -57,6 +59,8 @@ volumes:
     name: frontend_srcs
   image_data:
     name: image_data
+  static_data:
+    name: static_data
   ssl_nginx:
     name: ssl_nginx
   ssl_backend:
