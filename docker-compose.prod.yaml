@@ -3,15 +3,12 @@ version: "3"
 services:
   ssl-init:
     container_name: ssl-init
-    image: debian:bullseye-slim
+    build:
+      context: .
+      dockerfile: ./src/ssl-init/Dockerfile.prod
     volumes:
       - ssl_nginx:/certs/nginx
       - ssl_backend:/certs/backend
-      - ./scripts:/scripts
-    command: /bin/sh -c "apt-get update && apt-get install -y openssl && \
-          chmod +x /scripts/generate_nginx_ssl.sh /scripts/generate_backend_ssl.sh && \
-          /scripts/generate_nginx_ssl.sh && \
-          /scripts/generate_backend_ssl.sh"
     networks:
       - app_network
 
