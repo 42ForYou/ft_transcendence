@@ -1,0 +1,9 @@
+FROM debian:bullseye-slim
+
+RUN /bin/sh -c "apt-get update && apt-get install -y openssl"
+
+COPY scripts /scripts
+
+RUN chmod +x /scripts/ssl-init.sh
+
+CMD ["/scripts/ssl-init.sh"]
