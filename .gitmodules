@@ -1,8 +1,0 @@
-[submodule "src/frontend"]
-	path = src/frontend
-	url = https://github.com/42ForYou/frontend.git
-	branch = main
-[submodule "src/backend"]
-	path = src/backend
-	url = https://github.com/42ForYou/backend.git
-	branch = main
