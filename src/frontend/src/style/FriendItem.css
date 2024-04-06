@@ -1,0 +1,31 @@
+.FriendItem {
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background-color: #aad6ff55;
+  width: 100%;
+  padding: 16px;
+  text-shadow: 3px 2px 3px rgb(21 45 189);
+}
+
+.FriendItem h5 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.FriendItem a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.FriendItem:hover {
+  background-color: #7da8ff77;
+  text-shadow: 2px 0px 3px #5776b4;
+}
+
+.FriendItem .icon {
+  width: max(36px, 4vh);
+  height: max(36px, 4vh);
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,101 @@
+.BracketPage {
+  height: 100vh;
+  background-image: url("../../public/assets/images/background-bracket.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.BracketPage h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 2px 3px rgb(82 0 175);
+}
+
+.Bracket {
+  background-color: rba(100, 150, 200, 0.5); /* 배경색 */
+}
+
+.Bracket .avatar {
+}
+
+.bracket-player {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Orbit", sans-serif;
+  text-shadow: 1px 2px 3px rgb(82 0 175);
+}
+
+.bracket .row {
+  display: flex; /* Flexbox 레이아웃을 활성화 */
+  flex-wrap: nowrap; /* 아이템들이 다음 줄로 넘어가지 않도록 설정 */
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.bracket-box {
+  min-width: 5rem;
+  min-height: 8rem;
+}
+
+@media (min-width: 2000px) {
+  .bracket-box {
+    min-height: 10rem;
+  }
+
+  .Bracket {
+    margin-top: 5rem;
+  }
+
+  .BracketPage h1 {
+    border-bottom: 1px solid white;
+    padding-bottom: 2rem;
+  }
+}
+
+.TournamentResultModal .text-center {
+  text-align: center;
+  /* font-weight: bold; */
+}
+
+.TournamentResultModal h4 {
+  font-family: "Orbit", sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+.TournamentResultModal img {
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.player-in-modal {
+  font-family: "Orbit", sans-serif;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.win-or-lose {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.winner-text {
+  color: orange;
+}
+
+.loser-text {
+  color: gray;
+}
+
+.TournamentResultModal span {
+  color: orange;
+  font-family: "Orbit", sans-serif;
+}

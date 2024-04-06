@@ -1,0 +1,16 @@
+.CallbackPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 전체 화면 높이 */
+  background-color: #f0f2f5; /* 배경색 */
+  background-image: url("../../public/assets/images/background-login.jpeg");
+  background-size: cover;
+  background-position: center;
+  font-family: "Orbitron", sans-serif;
+  font-style: italic;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}

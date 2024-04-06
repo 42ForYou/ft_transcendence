@@ -1,0 +1,17 @@
+.PongScenePage {
+  background-image: url("../../public/assets/images/background-bracket.png");
+  background-size: cover; /* 배경 이미지가 전체 화면을 커버하도록 설정 */
+  background-position: center; /* 초기 배경 위치를 중앙으로 설정 */
+}
+
+.PongStatus {
+  color: aliceblue;
+  font-family: "Orbitron", sans-serif;
+  background-color: rgba(46, 37, 69, 0.379);
+  text-shadow: 2px 2px 4px rgba(48, 155, 255, 1);
+}
+
+.PongStatus .SuddenDeath {
+  color: #ff4444;
+  text-shadow: 2px 1px 9px #ff0056;
+}

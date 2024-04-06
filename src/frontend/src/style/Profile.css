@@ -1,0 +1,78 @@
+.ProfileTextLine {
+  font-family: "Orbit", sans-serif;
+}
+
+.profile-title p {
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  color: aliceblue;
+  font-size: 1.5rem;
+}
+
+.ProfileTrace p {
+  font-family: "Roboto", sans-serif;
+  color: aliceblue;
+}
+
+.ProfileTrace div {
+  border-radius: 20px;
+}
+
+.ProfileBox input {
+  color: black;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.stats-section {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
+
+.stats-chart {
+  flex: 1;
+  min-height: 200px;
+}
+
+.ProfileMatchHistory .table {
+  background-color: transparent;
+  color: white;
+}
+
+.ProfileMatchHistory .table th,
+.ProfileMatchHistory .table td {
+  background-color: transparent;
+  color: white;
+}
+
+.ProfileTextLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ProfileTextLine label,
+.ProfileTextLine span,
+.ProfileTextLine input[type="text"] {
+  width: auto;
+  margin: 0 10px;
+}
+
+.ProfileTextLine input[type="text"] {
+  font-family: "Noto Sans KR", sans-serif;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.ProfileTextLine span {
+  padding: 5px;
+  border-radius: 5px;
+}

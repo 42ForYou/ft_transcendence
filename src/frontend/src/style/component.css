@@ -1,0 +1,12 @@
+LoadingPage {
+  color: white;
+}
+
+#chat {
+  background-color: aliceblue;
+  color: black;
+}
+
+#chat-input {
+  color: black;
+}

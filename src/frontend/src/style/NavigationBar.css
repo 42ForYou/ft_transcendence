@@ -1,0 +1,44 @@
+/* Navigation Bar */
+.NavigationBar {
+  background-color: rgba(43, 17, 103, 0.379);
+  /* background-image: url('https://media.istockphoto.com/id/1085287936/photo/milky-way.jpg?s=612x612&w=0&k=20&c=cSnObab7Tv5r2WOhJ7glRiLZ7RlZo6Ar29q3ULdrlmI='); */
+}
+
+.NavigationBar-Content {
+  border-left: 2px dashed #fff;
+  border-right: 2px dashed #fff;
+}
+
+.NavItems {
+  margin-left: 1vw;
+  list-style: none;
+  font-size: max(1.5rem, 1.8vw);
+  font-weight: 400;
+  text-decoration: none;
+}
+.NavItems a {
+  font-family: "Orbitron", sans-serif;
+  text-decoration: none;
+  color: aliceblue;
+}
+.NavItems a:hover {
+  text-shadow:
+    0 0 8px #7da8ff,
+    0 0 20px #7da8ff,
+    0 0 24px #7da8ff;
+}
+.NavItems img {
+  filter: invert(100%);
+}
+
+.NavUser {
+  color: aliceblue;
+  font-size: max(1.3rem, 1.5vw);
+  font-family: "Orbit", sans-serif;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.nav-link {
+  color: aliceblue;
+  text-decoration: none;
+}

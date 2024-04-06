@@ -1,0 +1,26 @@
+FROM node AS build
+
+WORKDIR /app
+
+COPY ./frontend .
+
+RUN npm install
+RUN npm run build
+
+FROM nginx:1.25
+
+RUN apt-get update && apt-get install -y netcat-openbsd
+
+WORKDIR /var/www/html
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=build /app/dist ./dist
+
+RUN chown -R www-data:www-data /var/www/html/dist
+
+COPY ./nginx/scripts /scripts
+
+EXPOSE 443 80
+
+CMD [ "/scripts/entrypoint.sh" ]

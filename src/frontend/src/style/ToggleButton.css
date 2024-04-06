@@ -1,0 +1,38 @@
+.toggle-button {
+  width: 80px; /* 너비 증가 */
+  height: 40px; /* 높이 증가 */
+  background-color: #ccc;
+  border-radius: 25px; /* 높이의 절반 값으로 조정 */
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 0 10px; /* 패딩 조정 */
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.toggle-button.toggled {
+  background-color: #4caf50;
+}
+
+.toggle-button-circle {
+  width: 30px; /* 내부 원 크기 조정 */
+  height: 30px; /* 내부 원 크기 조정 */
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px; /* 초기 위치 조정 */
+  transition: left 0.3s;
+}
+
+.toggle-button.toggled .toggle-button-circle {
+  left: calc(100% - 35px); /* 이동 위치 조정 */
+}
+
+.toggle-button span {
+  color: white;
+  pointer-events: none;
+  font-size: 1.5rem; /* 텍스트 크기 조정 */
+}

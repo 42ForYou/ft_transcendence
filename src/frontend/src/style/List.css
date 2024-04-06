@@ -1,0 +1,45 @@
+.ListPagination button {
+  color: black;
+  font-size: 20px; /* 버튼의 글꼴 크기 */
+  background-color: #fff; /* 버튼의 배경색 */
+  border: 2px solid #ccc; /* 버튼의 테두리 스타일과 색상 */
+  border-radius: 50%; /* 버튼의 모서리를 둥글게 만듭니다. */
+  width: 50px; /* 버튼의 너비 */
+  height: 50px; /* 버튼의 높이 */
+  margin: 0 5px; /* 버튼 간의 좌우 여백 */
+  cursor: pointer; /* 포인터로 변경하여 클릭 가능한 모양으로 만듭니다. */
+}
+
+.ListPagination button:hover {
+  background-color: #f0f0f0; /* 마우스를 올렸을 때 버튼의 배경색 */
+}
+
+.ListPagination .row.justify-content-center {
+  text-align: center; /* 내용을 가운데 정렬합니다. */
+}
+
+.ListItem {
+  flex-grow: 0; /* 아이템이 컨테이너 공간을 자동으로 채우지 않도록 설정 */
+  flex-shrink: 0; /* 아이템이 컨테이너 공간 부족 시 줄어들지 않도록 설정 */
+  flex-basis: 33.3333%; /* 예를 들어 3개의 아이템이 같은 줄에 배치될 경우 */
+}
+
+.ListFilter .FilterType button {
+  font-family: "Noto Sans KR", sans-serif;
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 1.3rem;
+}
+
+.ListFilter .FilterType button:hover {
+  text-shadow:
+    0 0 8px #7da8ff,
+    0 0 20px #7da8ff,
+    0 0 24px #7da8ff;
+  /* text-shadow: 0 0 8px #fff, 0 0 20px #fff, 0 0 24px #fff; */
+  color: aliceblue;
+}
+
+.ListFilter button .selectedFilter {
+  font-style: bold !important;
+}

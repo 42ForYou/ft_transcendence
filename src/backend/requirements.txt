@@ -1,0 +1,13 @@
+Django
+djangorestframework
+django-filter
+django-cors-headers
+djangorestframework-simplejwt
+psycopg2
+daphne
+drf-yasg
+python-socketio
+python-dotenv
+requests
+netifaces
+pylint-django

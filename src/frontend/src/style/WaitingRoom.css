@@ -1,0 +1,106 @@
+.WaitingRoomBox {
+  background-color: #f0f2f5; /* 배경색 */
+}
+
+.WaitingRoomInfo {
+  background-image: url("../../public/assets/images/silver-metal.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #ffffff; /* 흰색 텍스트 */
+  font-family: "Orbit", sans-serif; /* 깔끔한 산세리프 글꼴 */
+  font-size: 24px; /* 적절한 크기 */
+  font-weight: bold; /* 굵은 글자 */
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px blue,
+    0 0 10px #0f2b46;
+}
+
+.WaitingRoomInfo p {
+  margin: 0;
+  padding: 0;
+}
+
+.WaitingRoomInfo .title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.WaitingPlayersGrid {
+  color: white; /* 글자색 */
+  font-family: "orbit", sans-serif;
+  font-size: 1rem;
+  text-shadow: 2px 0px 3px rgba(1, 1, 1, 1);
+  background-image: url("../../public/assets/images/background-home.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.WaitingPlayersRows .empty {
+  border: 2px solid white;
+  background-color: #f0f2f544; /* 배경색 */
+  background-image: "";
+}
+
+.WaitingPlayersRows .full {
+  border: 2px solid white;
+  background-color: rgba(100, 150, 200, 0.5); /* 배경색 */
+  background-image: url("../../public/assets/images/spaceship-inner.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.WaitingPlayersRows .full.mine {
+  color: #29ffe4;
+}
+
+.WaitingPlayersRows .full.host {
+  position: relative;
+}
+
+.WaitingPlayer {
+  position: relative; /* 아바타 이미지를 포함하는 div에 상대 위치 설정 */
+}
+
+.WaitingPlayer .crown-icon {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36px;
+  color: gold;
+}
+
+/* .WaitingPlayersRows .full.host.mine {
+	border: 10px solid pink; 
+}
+
+.WaitingPlayersRows .full.mine {
+	border: 2px solid pink; 
+} */
+
+.WaitingPlayersRows .col-6 h5 {
+  color: white; /* 글자색 */
+  font-family: "orbitron", sans-serif;
+  font-size: 1.5rem;
+}
+
+.WaitingRoomBox .vs-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  z-index: 2;
+}
+
+.WaitingRoomButtons {
+  background-image: url("../../public/assets/images/silver-metal.jpg");
+  background-size: cover;
+  background-position: center;
+}

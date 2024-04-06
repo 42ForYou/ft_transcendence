@@ -1,0 +1,45 @@
+/* CustomButton.css */
+.CustomButton {
+  color: white;
+  border: solid 2px white;
+  border-radius: 10px;
+  padding: 6px 10px;
+  /* box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4); */
+}
+
+/* Dynamic background colors based on props */
+.background-red {
+  background-color: #e57373aa;
+}
+
+.background-yellow {
+  background-color: #d4e157aa;
+}
+
+.background-green {
+  background-color: #81c784aa;
+}
+
+.background-blue {
+  background-color: #64b5f6aa;
+}
+
+.background-dark-red {
+  background-color: #eb2323ab;
+}
+
+.background-dark-yellow {
+  background-color: #fdd835aa;
+}
+
+.background-dark-green {
+  background-color: #388e3caa;
+}
+
+.background-dark-blue {
+  background-color: #1976d2aa;
+}
+
+.background-default {
+  background-color: #ffffff11;
+}

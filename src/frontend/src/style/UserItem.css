@@ -1,0 +1,18 @@
+.UserItem {
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background-color: #aad6ff55;
+  width: 100%;
+  padding: 16px;
+  text-shadow: 3px 2px 3px rgb(21 45 189);
+}
+
+.UserItem a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.UserItem:hover {
+  background-color: #7da8ff77;
+  text-shadow: 2px 0px 3px #5776b4;
+}

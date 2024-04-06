@@ -1,0 +1,62 @@
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  /* overflow: hidden; */
+}
+
+.PageContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ContentContainer {
+  padding: 20px;
+}
+
+.ContentContainer .Content {
+  background-color: rgba(13, 3, 21, 0.514);
+  border-radius: 20px;
+  border: 1px solid whitesmoke;
+}
+
+.Content,
+.ContentBody {
+  overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
+}
+
+.ContentTitle {
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.ContentBody {
+  font-family: "Orbit", sans-serif;
+  font-size: 1.3rem;
+  color: aliceblue;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.full-height {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.CustomModal {
+  color: black;
+  font-family: "Noto Sans KR", sans-serif;
+}
